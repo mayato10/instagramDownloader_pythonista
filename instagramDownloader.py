@@ -1,11 +1,11 @@
-import ui, appex
+import ui
 from urllib import request
 from bs4 import BeautifulSoup
 import datetime
 import clipboard
 
 def DownloadFile(url):
-	print ('Downloading image...')
+	print ('Baixando imagem...')
 	f = request.urlopen(url)
 	htmlSource = f.read()
 	soup = BeautifulSoup(htmlSource,'html.parser')
@@ -13,11 +13,15 @@ def DownloadFile(url):
 	imgURL = metaTag[0]['content']
 	fileName = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S") + '.jpg'
 	request.urlretrieve(imgURL, fileName)
-	print ('Done. Image saved to disk as ' + fileName)
+	print ('Imagem salva como: ' + fileName)
+	
+def clearClip():
+	clipboard.set('')
 	
 def main():
 	text = clipboard.get()
 	DownloadFile(text)
+	clearClip()
 	
 if __name__ == '__main__':
 	main()
