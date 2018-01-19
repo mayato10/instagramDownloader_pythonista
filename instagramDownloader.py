@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import datetime
 import clipboard
 
-def DownloadFile(url):
+def downloadFile(url):
 	print ('Baixando imagem...')
 	f = request.urlopen(url)
 	htmlSource = f.read()
@@ -20,7 +20,7 @@ def clearClip():
 	
 def main():
 	text = clipboard.get()
-	DownloadFile(text)
+	downloadFile(text)
 	clearClip()
 	
 if __name__ == '__main__':
