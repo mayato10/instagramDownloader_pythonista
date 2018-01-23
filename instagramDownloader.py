@@ -8,8 +8,8 @@ import clipboard
 fileName = datetime.datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.jpg'
 
 def downloadFile(url):
-	print ('Baixando imagem...')
 	f = request.urlopen(url)
+	print ('Baixando imagem...')
 	htmlSource = f.read()
 	soup = BeautifulSoup(htmlSource,'html.parser')
 	metaTag = soup.find_all('meta', {'property':'og:image'})
@@ -24,7 +24,7 @@ def setImageClip():
 	img = Image.open(fileName)
 	img.show()
 	clipboard.set_image(img)
-	
+		
 def main():
 	text = clipboard.get()
 	downloadFile(text)
