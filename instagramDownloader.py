@@ -1,4 +1,3 @@
-import ui
 from urllib import request
 from bs4 import BeautifulSoup
 from PIL import Image
