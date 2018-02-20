@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from PIL import Image
 import datetime
 import clipboard
+import shutil
 
 fileName = datetime.datetime.now().strftime("%d-%m-%Y_%H:%M:%S") + '.jpg'
 
@@ -20,7 +21,8 @@ def clearClip():
 	clipboard.set('')
 
 def setImageClip():
-	img = Image.open(fileName)
+	shutil.move(fileName, "img)
+	img = Image.open("img/"+fileName)
 	img.show()
 	clipboard.set_image(img)
 		
